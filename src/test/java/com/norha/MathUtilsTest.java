@@ -13,6 +13,13 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariables;
+import org.junit.jupiter.api.condition.EnabledIfSystemProperties;
+import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
+import org.junit.jupiter.api.condition.EnabledOnJre;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.JRE;
+import org.junit.jupiter.api.condition.OS;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MathUtilsTest {
@@ -114,9 +121,33 @@ class MathUtilsTest {
 	 * 
 	 * @DisplayName
 	 * 
+	 * @Disabled
 	 * 
 	 */
 	
+	/*
+	 * 
+	 * Conditional Execution
+	 * 
+	 * @EnabledOnOs(OS.LINUX)
+	 * 
+	 * @EnabledOnJre(JRE.JAVA_10)
+	 * 
+	 * @EnabledIf
+	 * @EnabledIfEnvironmentVariables
+	 * 
+	 * @EnabledIfSystemProperty    Dev Node Only
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
+	
+	/*
+	 * Handling External Factor
+	 * 
+	 * assumeThat
+	 */
 	MathUtils mathUtils;
 	
 	@AfterAll
@@ -139,6 +170,7 @@ class MathUtilsTest {
 	}
 	
 	@Test
+	@EnabledOnOs(OS.LINUX)
 	@DisplayName("TESTING ADD method")
 	void testAdd() {
 		MathUtils mathUtils = new MathUtils();
