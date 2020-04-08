@@ -12,14 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariables;
-import org.junit.jupiter.api.condition.EnabledIfSystemProperties;
-import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
-import org.junit.jupiter.api.condition.EnabledOnJre;
 import org.junit.jupiter.api.condition.EnabledOnOs;
-import org.junit.jupiter.api.condition.JRE;
 import org.junit.jupiter.api.condition.OS;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -154,6 +150,19 @@ class MathUtilsTest {
 	 * this is used when programmatic condition check if the server is down there 
 	 * is no point of running the test
 	 */
+	
+	/*
+	 * assertAll is a mechaniseam to run a bunch of assert statement in a single
+	 * statements
+	 */
+	/*
+	 * @Nested
+	 * 
+	 * class
+	 */ 
+	
+	
+	
 	MathUtils mathUtils;
 	
 	@AfterAll
@@ -175,11 +184,25 @@ class MathUtilsTest {
 		System.out.println("Cleaning Up........");
 	}
 	
+	@Nested
+	@DisplayName("Subtract Methods")
+	class SubtactTest {
+		@Test
+		@DisplayName("When Subtract Positive Numbers")
+		void testSubtractPositive() {
+			assertEquals(2, mathUtils.subtract(4, 2), "subtract positive Numbers");
+		}
+		@Test
+		@DisplayName("When Subtract Negative Numbers")
+		void testSubtractNegative() {
+			assertEquals(-3, mathUtils.subtract(-8, -5), "subtract Negative Numbers");
+		}
+	}
+	
 	@Test
 	@EnabledOnOs(OS.LINUX)
 	@DisplayName("TESTING ADD method")
 	void testAdd() {
-		MathUtils mathUtils = new MathUtils();
 		int expected = 2;
 		int actual = mathUtils.add(1, 1);
 		assertEquals(expected, actual,"Add Method Should add two Numbers");
@@ -199,13 +222,11 @@ class MathUtilsTest {
 	void testDivide() {
 		boolean isServerUp = false;
 		assumeTrue(isServerUp);
-		MathUtils mathUtils = new MathUtils();
 		assertThrows(ArithmeticException.class,() -> mathUtils.divide(1, 0),"Divide by Zero Should Thorw");
 	}
 	
 	@Test
 	void testComputeCircleArea() {
-		MathUtils mathUtils = new MathUtils();
 		assertEquals(314.1592653589793, mathUtils.computeCircleArea(10),"It sholud return the right Value");
 	}
 	
