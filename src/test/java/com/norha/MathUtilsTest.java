@@ -1,6 +1,7 @@
 package com.norha;
 
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -152,14 +153,16 @@ class MathUtilsTest {
 	 */
 	
 	/*
-	 * assertAll is a mechaniseam to run a bunch of assert statement in a single
-	 * statements
-	 */
-	/*
 	 * @Nested
 	 * 
 	 * class
 	 */ 
+	
+	/*
+	 * assertAll is a mechaniseam to run a bunch of assert statement in a single
+	 * statements
+	 */
+	
 	
 	
 	
@@ -198,6 +201,17 @@ class MathUtilsTest {
 			assertEquals(-3, mathUtils.subtract(-8, -5), "subtract Negative Numbers");
 		}
 	}
+	
+	@Test
+	@DisplayName("Multiply Methods")
+	void testMultiply() {
+		assertAll(
+				() -> assertEquals(2, mathUtils.multiply(1, 2), "subtract positive Numbers"),
+				() -> assertEquals(0, mathUtils.multiply(0, 2), "subtract positive Numbers"),
+				() -> assertEquals(-2, mathUtils.multiply(-1, 2), "subtract positive Numbers")
+				);
+	}
+	
 	
 	@Test
 	@EnabledOnOs(OS.LINUX)
