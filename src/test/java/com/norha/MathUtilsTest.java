@@ -58,7 +58,7 @@ class MathUtilsTest {
 	@Test
 	void testDivide() {
 		MathUtils mathUtils = new MathUtils();
-		assertThrows(ArithmeticException.class,() -> mathUtils.divide(1, 0),"Divide by Zero Should Thorw");
+		assertThrows(NullPointerException.class,() -> mathUtils.divide(1, 0),"Divide by Zero Should Thorw");
 	}
 	
 	@Test
