@@ -3,11 +3,13 @@ package com.norha;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -104,6 +106,16 @@ class MathUtilsTest {
 	 * 
 	 */
 	
+	
+	/*
+	 * Annotation to Scale your Tests
+	 * 
+	 * 
+	 * @DisplayName
+	 * 
+	 * 
+	 */
+	
 	MathUtils mathUtils;
 	
 	@AfterAll
@@ -126,11 +138,17 @@ class MathUtilsTest {
 	}
 	
 	@Test
+	@DisplayName("TESTING ADD method")
 	void testAdd() {
 		MathUtils mathUtils = new MathUtils();
 		int expected = 2;
 		int actual = mathUtils.add(1, 1);
 		assertEquals(expected, actual,"Add Method Should add two Numbers");
+	}
+	@Test
+	@DisplayName("Testing Disabled Annotation")
+	void testDisabled() {
+		fail("This Test Should not to Be Run");
 	}
 
 	/*
