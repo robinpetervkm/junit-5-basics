@@ -2,6 +2,7 @@ package com.norha;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -49,11 +50,15 @@ class MathUtilsTest {
 		int actual = mathUtils.add(1, 1);
 		assertEquals(expected, actual,"Add Method Should add two Numbers");
 	}
-	
+
+	/*
+	 * try {}catch thing is done by assertThrows
+	 * 
+	 */
 	@Test
 	void testDivide() {
 		MathUtils mathUtils = new MathUtils();
-		mathUtils.divide(1, 0);
+		assertThrows(ArithmeticException.class,() -> mathUtils.divide(1, 0),"Divide by Zero Should Thorw");
 	}
 	
 	@Test
