@@ -9,7 +9,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MathUtilsTest {
 	
 	/*
@@ -87,16 +89,30 @@ class MathUtilsTest {
 	 * so. we have to declear them as static
 	 * 
 	 */
-		
+	
+	/*
+	 * Calss instance creation can be alterd using annotaion
+	 * 
+	 * by default it is per
+	 * 
+	 * @TestInstance(TestInstance.Lifecycle.PER_METHOD) we can make as per class
+	 * 
+	 * @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+	 * 
+	 * if use the PER_CLASS then @BeforeAll AND @AfterAll Method not to be Static
+	 * 
+	 * 
+	 */
+	
 	MathUtils mathUtils;
 	
 	@AfterAll
-	static void afterAllCleanup() {
+	void afterAllCleanup() {
 		System.out.println("Last Clean up...");
 	}
 	
 	@BeforeAll
-	static void beforeAllInit() {
+	void beforeAllInit() {
 		System.out.println("Berfoe All Called...");
 	}
 	
