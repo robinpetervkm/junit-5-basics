@@ -90,8 +90,13 @@ class MathUtilsTest {
 		
 	MathUtils mathUtils;
 	
+	@AfterAll
+	void afterAllCleanup() {
+		System.out.println("Last Clean up...");
+	}
+	
 	@BeforeAll
-	void beforeAllInit() {
+	static void beforeAllInit() {
 		System.out.println("Berfoe All Called...");
 	}
 	
