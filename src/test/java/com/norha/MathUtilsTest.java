@@ -1,6 +1,8 @@
 package com.norha;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 class MathUtilsTest {
@@ -11,9 +13,48 @@ class MathUtilsTest {
 	 * and informs the junit engin what methods need to run
 	 */
 
+	
+	
+	
+	/*
+	 * Expectation vs reality
+	 * 
+	 * # create an instance of the class under test
+	 * 
+	 * # Set up inputs
+	 * 
+	 * # Execute the code you want to test
+	 * 
+	 * # verify the result is what you expect
+	 */
+	
+	/*
+	 * assertEquals
+	 * 
+	 * assertEquals(expected, actual)
+	 * 
+	 * 
+	 * assertArrayEquals(expectedArray, actualArray)
+	 * 
+	 * 
+	 * assertIterableEquals(expectedArray, actualArray)
+	 */
+		
+		
+	
 	@Test
-	void test() {
-		System.out.println("This test ran");	
+	void testAdd() {
+		MathUtils mathUtils = new MathUtils();
+		int expected = 2;
+		int actual = mathUtils.add(1, 1);
+		assertEquals(expected, actual,"Add Method Should add two Numbers");
 	}
+	
+	@Test
+	void testComputeCircleArea() {
+		MathUtils mathUtils = new MathUtils();
+		assertEquals(314.1592653589793, mathUtils.computeCircleArea(10),"It sholud return the right Value");
+	}
+	
 
 }
