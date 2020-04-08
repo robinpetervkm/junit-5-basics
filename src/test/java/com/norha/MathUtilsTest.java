@@ -78,8 +78,22 @@ class MathUtilsTest {
 	 * 
 	 * 
 	 */
+	
+	
+	/*
+	 * BeforeAll and AfterAll will not run normal methods because it is not depend
+	 * on the instance of the test class even before the instance is created
+	 * 
+	 * so. we have to declear them as static
+	 * 
+	 */
 		
 	MathUtils mathUtils;
+	
+	@BeforeAll
+	void beforeAllInit() {
+		System.out.println("Berfoe All Called...");
+	}
 	
 	@BeforeEach
 	void init() {
