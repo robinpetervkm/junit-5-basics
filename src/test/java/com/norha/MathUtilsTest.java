@@ -51,6 +51,12 @@ class MathUtilsTest {
 	}
 	
 	@Test
+	void testDivide() {
+		MathUtils mathUtils = new MathUtils();
+		mathUtils.divide(1, 0);
+	}
+	
+	@Test
 	void testComputeCircleArea() {
 		MathUtils mathUtils = new MathUtils();
 		assertEquals(314.1592653589793, mathUtils.computeCircleArea(10),"It sholud return the right Value");
