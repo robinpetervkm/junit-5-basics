@@ -91,7 +91,7 @@ class MathUtilsTest {
 	MathUtils mathUtils;
 	
 	@AfterAll
-	void afterAllCleanup() {
+	static void afterAllCleanup() {
 		System.out.println("Last Clean up...");
 	}
 	
