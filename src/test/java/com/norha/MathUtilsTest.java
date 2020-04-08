@@ -4,6 +4,7 @@ package com.norha;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -147,6 +148,11 @@ class MathUtilsTest {
 	 * Handling External Factor
 	 * 
 	 * assumeThat
+	 * 
+	 * 
+	 * assumeTrue (boolean)
+	 * this is used when programmatic condition check if the server is down there 
+	 * is no point of running the test
 	 */
 	MathUtils mathUtils;
 	
@@ -191,6 +197,8 @@ class MathUtilsTest {
 	 */
 	@Test
 	void testDivide() {
+		boolean isServerUp = false;
+		assumeTrue(isServerUp);
 		MathUtils mathUtils = new MathUtils();
 		assertThrows(ArithmeticException.class,() -> mathUtils.divide(1, 0),"Divide by Zero Should Thorw");
 	}
