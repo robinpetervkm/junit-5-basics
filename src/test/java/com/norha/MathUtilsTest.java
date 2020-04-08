@@ -85,6 +85,10 @@ class MathUtilsTest {
 	void init() {
 		mathUtils = new MathUtils();
 	}
+	@AfterEach
+	void cleanup(){
+		System.out.println("Cleaning Up........");
+	}
 	
 	@Test
 	void testAdd() {
@@ -101,7 +105,7 @@ class MathUtilsTest {
 	@Test
 	void testDivide() {
 		MathUtils mathUtils = new MathUtils();
-		assertThrows(NullPointerException.class,() -> mathUtils.divide(1, 0),"Divide by Zero Should Thorw");
+		assertThrows(ArithmeticException.class,() -> mathUtils.divide(1, 0),"Divide by Zero Should Thorw");
 	}
 	
 	@Test
