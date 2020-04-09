@@ -15,8 +15,11 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestReporter;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
 
@@ -167,10 +170,16 @@ class MathUtilsTest {
 	 * statements
 	 */
 	
-	
+	/*
+	 * TestInfo and TestReporter
+	 * 
+	 */
 	
 	
 	MathUtils mathUtils;
+	
+	TestInfo info;
+	TestReporter reporter;
 	
 	@AfterAll
 	void afterAllCleanup() {
@@ -183,8 +192,14 @@ class MathUtilsTest {
 	}
 	
 	@BeforeEach
-	void init() {
+	void init(TestInfo info,TestReporter reporter) {
+		this.info = info;
+		this.reporter = reporter;
 		mathUtils = new MathUtils();
+		
+		reporter.publishEntry("Running "+info.getDisplayName()+" With tag" + info.getTags());
+		
+		
 	}
 	@AfterEach
 	void cleanup(){
@@ -193,6 +208,7 @@ class MathUtilsTest {
 	
 	@Nested
 	@DisplayName("Subtract Methods")
+	@Tag("Math")
 	class SubtactTest {
 		@Test
 		@DisplayName("When Subtracting with Positive Numbers")
@@ -207,6 +223,7 @@ class MathUtilsTest {
 	}
 	
 	@Test
+	@Tag("Math")
 	@DisplayName("Multiply Methods")
 	void testMultiply() {
 		assertAll(
@@ -220,6 +237,7 @@ class MathUtilsTest {
 	@Test
 	@EnabledOnOs(OS.LINUX)
 	@DisplayName("TESTING ADD method")
+	@Tag("Math")
 	void testAdd() {
 		int expected = 2;
 		int actual = mathUtils.add(1, 1);
@@ -237,6 +255,7 @@ class MathUtilsTest {
 	 * 
 	 */
 	@Test
+	@Tag("Math")
 	void testDivide() {
 		boolean isServerUp = false;
 		assumeTrue(isServerUp);
@@ -245,6 +264,7 @@ class MathUtilsTest {
 	
 	@Test
 	@RepeatedTest(3)
+	@Tag("Circle")
 	void testComputeCircleArea() {
 		assertEquals(314.1592653589793, mathUtils.computeCircleArea(10),"It sholud return the right Value");
 	}
